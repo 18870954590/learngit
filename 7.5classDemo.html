@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <style>
+        .red{
+            color: red;
+        }
+        .thin{
+            font-weight: 200 ;
+        }
+        .active{
+            letter-spacing: 0.5em;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="classDemo">
+        <!--使用数组-->
+        <h1 v-bind:class="['red','thin',{ active: false }]">我是h1</h1>
+        <!--使用三元表达式-->
+        <h1 v-bind:class="['red','thin',isActive ? 'active' : '']">我是h1</h1>
+
+        <!--使用对象-->
+        <h1 v-bind:class="{ red: true,thin: true,active: true}">我是h1</h1>
+        <!--使用data中的对象-->
+        <h1 v-bind:class="classObj">我是h1</h1>
+        <!--使用计算属性-->
+        <h1 v-bind:class="classObj">我是h1</h1>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#classDemo',
+            data:{
+                isActive:true,
+                error:false,
+                classObj:{ red: true,thin: true,active: true}
+            },
+            computed:{
+                classObj:function () {
+                    return { red: true,thin: true,active: true};
+                }
+            }
+        })
+    </script>
+</body>
+</html>
